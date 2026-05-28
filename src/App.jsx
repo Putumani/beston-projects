@@ -5,6 +5,7 @@ import About from './components/About'
 import Services from './components/Services'
 import Projects from './components/Projects'
 import InteriorsReference from './components/InteriorsReference'
+import CTA from './components/CTA'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Services /> 
       <Projects />
       <InteriorsReference />
+      <CTA />
       
     </div>
   )
