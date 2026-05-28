@@ -12,6 +12,7 @@ function InteriorsReference() {
         <div className="bg-[#071d46] rounded-[32px] overflow-hidden border border-slate-800 p-8 md:p-12 lg:p-16">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             
+            {/* Left Content Column */}
             <div className="w-full lg:w-7/12">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-6 h-[1.5px]" style={{ backgroundColor: brandOrange }} />
@@ -39,8 +40,9 @@ function InteriorsReference() {
               </div>
             </div>
 
+            {/* Right Showcase Card Column */}
             <div className="w-full lg:w-5/12 flex justify-center items-center">
-              <div className="relative w-full max-w-[380px] aspect-square rounded-[24px] border border-slate-700 bg-[#0c2556] shadow-2xl overflow-hidden group">
+              <div className="relative w-full max-w-[380px] h-[450px] sm:h-[480px] lg:h-auto lg:aspect-square rounded-[24px] border border-slate-700 bg-[#0c2556] shadow-2xl overflow-hidden group">
                 <div className="absolute inset-0 w-full h-full bg-slate-900">
                   <img 
                     src={interiorImg} 
