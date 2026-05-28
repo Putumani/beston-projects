@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
 import Projects from './components/Projects'
+import InteriorsReference from './components/InteriorsReference'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <About />
       <Services /> 
       <Projects />
+      <InteriorsReference />
       
     </div>
   )
