@@ -33,20 +33,20 @@ function CTA() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <a
-              href="tel:#"
+              href="tel:+27658641093"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-bold text-white px-8 py-4 rounded-full shadow-lg transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               style={{ backgroundColor: brandOrange }}
             >
               <FaPhone size={14} />
-              <span>Call Our Project Team</span>
+              <span>Call +27 65 864 1093</span>
             </a>
 
             <a
-              href="mailto:#"
+              href="mailto:bestonconstruct@gmail.com"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-xs sm:text-sm font-bold text-white px-8 py-4 rounded-full border border-slate-700 bg-slate-900/40 backdrop-blur-sm transition-all duration-200 hover:bg-slate-900 hover:border-slate-600 active:scale-[0.98]"
             >
               <FaEnvelope size={14} style={{ color: brandOrange }} />
-              <span>Request a Structural Quote</span>
+              <span>bestonconstruct@gmail.com</span>
             </a>
           </div>
         </div>

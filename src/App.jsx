@@ -6,6 +6,7 @@ import Services from './components/Services'
 import Projects from './components/Projects'
 import InteriorsReference from './components/InteriorsReference'
 import CTA from './components/CTA'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <InteriorsReference />
       <CTA />
+      <Footer />
       
     </div>
   )
