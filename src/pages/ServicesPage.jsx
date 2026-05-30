@@ -128,7 +128,7 @@ const servicesList = [
     description: "Custom outdoor features including built-in braais and boundary wall renovations.",
     features: [
       "Built-in braai (outdoor)",
-      "Boundary wall renovations (Somerset area)",
+      "Boundary wall renovations",
       "Outdoor kitchen installation"
     ],
     icon: FaFire,
