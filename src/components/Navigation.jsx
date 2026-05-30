@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa6';
 import logo from '../assets/logo/logo.png';
 
-function Navigation() {
+function Navigation({ currentView, navigateTo }) {
   const brandDark = '#071d46';
   const brandOrange = '#ff5722';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +22,7 @@ function Navigation() {
   return (
     <header className="w-full bg-white border-b border-gray-200 select-none relative z-50">
       
+      {/* Desktop Header */}
       <div className="hidden md:flex w-full mx-auto" style={{ maxWidth: '1440px', height: '110px' }}>
         
         <div 
@@ -33,7 +34,7 @@ function Navigation() {
             height: '100%'
           }}
         >
-          <div className="flex items-center cursor-pointer" style={{ gap: '12px' }}>
+          <div onClick={() => navigateTo('home')} className="flex items-center cursor-pointer" style={{ gap: '12px' }}>
             <img 
               src={logo} 
               alt="beston construction Logo" 
@@ -47,6 +48,7 @@ function Navigation() {
         </div>
 
         <div className="flex flex-1 flex-col h-full min-w-0">
+          {/* Top Info Bar */}
           <div 
             className="w-full flex items-center justify-between shrink-0" 
             style={{ 
@@ -95,18 +97,39 @@ function Navigation() {
             </div>
           </div>
 
+          {/* Main Desktop Navbar Navigation */}
           <div className="w-full flex items-center justify-between flex-1" style={{ paddingLeft: '32px', paddingRight: '40px' }}>
             <nav className="flex items-center h-full text-[15px] font-bold" style={{ color: brandDark, gap: '32px' }}>
-              <a href="https://bestonprojectsinteriors.co.za" className="h-full flex items-center border-b-2 px-0.5" style={{ color: brandOrange, borderColor: brandOrange, textDecoration: 'none' }}>Home</a>
-              <a href="#" className="hover:text-[rgba(7,29,70,0.8)] transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>About Us</a>
-              <a href="#" className="hover:text-[rgba(7,29,70,0.8)] transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>Services</a>
-              <a href="#" className="hover:text-[rgba(7,29,70,0.8)] transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>Projects</a>
-              <a href="#" className="hover:text-[rgba(7,29,70,0.8)] transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>Contact Us</a>
+              <button 
+                onClick={() => navigateTo('home')} 
+                className="h-full flex items-center border-b-2 bg-transparent border-transparent px-0.5 font-bold cursor-pointer transition-colors"
+                style={{ 
+                  color: currentView === 'home' ? brandOrange : brandDark, 
+                  borderColor: currentView === 'home' ? brandOrange : 'transparent'
+                }}
+              >
+                Home
+              </button>
+              <a href="#about" className="hover:text-orange-500 transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>About Us</a>
+              
+              <button 
+                onClick={() => navigateTo('services')} 
+                className="h-full flex items-center border-b-2 bg-transparent border-transparent px-0.5 font-bold cursor-pointer transition-colors"
+                style={{ 
+                  color: currentView === 'services' ? brandOrange : brandDark, 
+                  borderColor: currentView === 'services' ? brandOrange : 'transparent'
+                }}
+              >
+                Services
+              </button>
+
+              <a href="#projects" className="hover:text-orange-500 transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>Projects</a>
+              <a href="#contact" className="hover:text-orange-500 transition-colors h-full flex items-center border-b-2 border-transparent px-0.5" style={{ textDecoration: 'none', color: brandDark }}>Contact Us</a>
             </nav>
 
             <div className="flex items-center shrink-0">
               <a 
-                href="#" 
+                href="#quote" 
                 className="text-white font-bold rounded-full transition-transform hover:scale-105 duration-200 text-sm tracking-wide flex items-center justify-center whitespace-nowrap"
                 style={{ 
                   backgroundColor: brandOrange,
@@ -125,8 +148,9 @@ function Navigation() {
 
       </div>
       
+      {/* Mobile Top Header */}
       <div className="flex md:hidden items-center justify-between w-full" style={{ height: '80px', paddingLeft: '24px', paddingRight: '24px' }}>
-        <div className="flex items-center cursor-pointer" style={{ gap: '12px' }}>
+        <div onClick={() => { navigateTo('home'); setIsMenuOpen(false); }} className="flex items-center cursor-pointer" style={{ gap: '12px' }}>
           <img 
             src={logo} 
             alt="Beston Projects Logo" 
@@ -156,6 +180,7 @@ function Navigation() {
         </button>
       </div>
       
+      {/* Mobile Sidebar Dropdown */}
       {isMenuOpen && (
         <div 
           style={{
@@ -173,39 +198,44 @@ function Navigation() {
           }}
         >
           <nav style={{ display: 'flex', flexDirection: 'column', width: '100%', borderBottom: '1px solid #f3f4f6' }}>
-            <a 
-              href="https://bestonprojectsinteriors.co.za" 
-              onClick={() => setIsMenuOpen(false)}
+            <button 
+              onClick={() => { navigateTo('home'); setIsMenuOpen(false); }}
               style={{ 
                 padding: '18px 32px', 
-                color: brandOrange, 
+                color: currentView === 'home' ? brandOrange : brandDark, 
                 fontWeight: 'bold',
                 fontSize: '16px',
-                textDecoration: 'none',
-                borderLeft: `4px solid ${brandOrange}`,
-                backgroundColor: '#fffbf9'
+                textAlign: 'left',
+                backgroundColor: currentView === 'home' ? '#fffbf9' : 'transparent',
+                border: 'none',
+                borderLeft: currentView === 'home' ? `4px solid ${brandOrange}` : 'none',
+                cursor: 'pointer'
               }}
             >
               Home
-            </a>
-            {/* About Us positioned next in the map layout order */}
-            {['About Us', 'Services', 'Projects', 'Contact Us'].map((link) => (
-              <a 
-                key={link}
-                href="#" 
-                onClick={() => setIsMenuOpen(false)}
-                style={{ 
-                  padding: '18px 32px', 
-                  color: brandDark, 
-                  fontWeight: '600',
-                  fontSize: '16px',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid #fafafa'
-                }}
-              >
-                {link}
-              </a>
-            ))}
+            </button>
+            
+            <a href="#about" onClick={() => setIsMenuOpen(false)} style={{ padding: '18px 32px', color: brandDark, fontWeight: '600', fontSize: '16px', textDecoration: 'none', borderBottom: '1px solid #fafafa' }}>About Us</a>
+            
+            <button 
+              onClick={() => { navigateTo('services'); setIsMenuOpen(false); }}
+              style={{ 
+                padding: '18px 32px', 
+                color: currentView === 'services' ? brandOrange : brandDark, 
+                fontWeight: 'bold',
+                fontSize: '16px',
+                textAlign: 'left',
+                backgroundColor: currentView === 'services' ? '#fffbf9' : 'transparent',
+                border: 'none',
+                borderLeft: currentView === 'services' ? `4px solid ${brandOrange}` : 'none',
+                cursor: 'pointer'
+              }}
+            >
+              Services
+            </button>
+
+            <a href="#projects" onClick={() => setIsMenuOpen(false)} style={{ padding: '18px 32px', color: brandDark, fontWeight: '600', fontSize: '16px', textDecoration: 'none', borderBottom: '1px solid #fafafa' }}>Projects</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} style={{ padding: '18px 32px', color: brandDark, fontWeight: '600', fontSize: '16px', textDecoration: 'none', borderBottom: '1px solid #fafafa' }}>Contact Us</a>
           </nav>
 
           <div 
@@ -239,7 +269,6 @@ function Navigation() {
           </div>
 
           <div style={{ padding: '28px 32px 40px 32px', display: 'flex', flexDirection: 'column', gap: '28px', backgroundColor: '#ffffff', flexGrow: 1 }}>
-            
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <a 
                 href={facebookUrl} 
@@ -261,7 +290,7 @@ function Navigation() {
 
             <div style={{ width: '100%' }}>
               <a 
-                href="#" 
+                href="#quote" 
                 onClick={() => setIsMenuOpen(false)}
                 style={{ 
                   backgroundColor: brandOrange,
@@ -281,7 +310,6 @@ function Navigation() {
                 Get A Quote
               </a>
             </div>
-
           </div>
 
         </div>

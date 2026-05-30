@@ -6,10 +6,9 @@ import concreteCastingImg from '../assets/home/services/concrete-casting.jpg'
 import staircaseImg from '../assets/home/services/staircase.jpg'
 import roofingImg from '../assets/home/services/roofing.jpg'
 import pavingImg from '../assets/home/services/paving.jpg'
-
 import parallaxBg from '../assets/home/parallax-image.jpg'
 
-function Services() {
+function Services({ navigateTo, isPreview }) {
   const brandDark = '#071d46'
   const brandOrange = '#ff5722'
 
@@ -62,11 +61,13 @@ function Services() {
     <>
       <section className="w-full py-20 lg:py-28 bg-[#f9fafb] select-none">
         <div className="w-full mx-auto px-6 md:px-10 lg:px-[50px]" style={{ maxWidth: '1440px' }}>
+          
+          {/* Section Headings */}
           <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-24">
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="w-8 h-[2px]" style={{ backgroundColor: brandOrange }} />
               <span className="text-xs font-bold tracking-wider uppercase opacity-75" style={{ color: brandDark, letterSpacing: '0.15em' }}>
-                OUR SERVICES
+                {isPreview ? 'OUR SERVICES' : 'FULL PORTFOLIO SPECIALITIES'}
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black tracking-tight leading-[1.15]" style={{ color: brandDark }}>
@@ -77,6 +78,8 @@ function Services() {
               From foundation to finishing touches, we deliver quality craftsmanship for all your exterior construction needs.
             </p>
           </div>
+
+          {/* Cards Portfolio Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 items-stretch mb-16">
             {servicesData.map((service, idx) => (
               <div 
@@ -123,20 +126,22 @@ function Services() {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Card Actions Container */}
                   <div className="flex items-center justify-between pt-4 border-t border-gray-50">
-                    <a 
-                      href="#details" 
-                      className="text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-colors group" 
+                    <button 
+                      onClick={() => navigateTo('services')}
+                      className="text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-colors group bg-transparent border-none p-0 cursor-pointer" 
                       style={{ color: brandOrange }}
                     >
                       <span>Learn More</span>
                       <FaArrowRight size={11} className="transform transition-transform group-hover:translate-x-0.5" />
-                    </a>
+                    </button>
                     
                     <a 
                       href="#quote" 
                       className="text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
-                      style={{ color: brandDark }}
+                      style={{ color: brandDark, textDecoration: 'none' }}
                     >
                       Request Quote
                     </a>
@@ -146,26 +151,34 @@ function Services() {
               </div>
             ))}
           </div>
-          <div className="flex items-center justify-center">
-            <div className="inline-flex items-center bg-white rounded-full p-1.5 shadow-md border border-gray-100 group cursor-pointer hover:shadow-lg transition-all">
-              <span 
-                className="text-xs sm:text-sm font-bold text-white px-6 py-3 rounded-full transition-transform duration-200"
-                style={{ backgroundColor: brandOrange }}
-              >
-                View All Services
-              </span>
+
+          {/* Conditional Bottom Section CTA Trigger (Only visible on Home preview) */}
+          {isPreview && (
+            <div className="flex items-center justify-center">
               <div 
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white ml-2 transition-transform duration-300 group-hover:translate-x-0.5"
-                style={{ backgroundColor: brandDark }}
+                onClick={() => navigateTo('services')}
+                className="inline-flex items-center bg-white rounded-full p-1.5 shadow-md border border-gray-100 group cursor-pointer hover:shadow-lg transition-all"
               >
-                <FaArrowRight size={12} />
+                <span 
+                  className="text-xs sm:text-sm font-bold text-white px-6 py-3 rounded-full transition-transform duration-200"
+                  style={{ backgroundColor: brandOrange }}
+                >
+                  View All Services
+                </span>
+                <div 
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white ml-2 transition-transform duration-300 group-hover:translate-x-0.5"
+                  style={{ backgroundColor: brandDark }}
+                >
+                  <FaArrowRight size={12} />
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
         </div>
       </section>
 
+      {/* Parallax Feature Backdrop Section */}
       <section 
         className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] z-0 overflow-hidden select-none"
         style={{ clipPath: 'inset(0 0 0 0)' }}

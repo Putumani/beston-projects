@@ -97,11 +97,11 @@ function Footer() {
 
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-5">
-              Sister Division
+              Interior Division
             </h4>
             <div className="p-4 rounded-2xl bg-[#0c2556] border border-slate-800">
               <p className="text-xs text-slate-300 font-medium leading-relaxed mb-4">
-                Looking for specialized carpentry, high-end kitchens, or internal transformations?
+                Looking for specialised carpentry, high-end kitchens, or internal transformations?
               </p>
               <a 
                 href="https://bestonprojectsinteriors.co.za" 
