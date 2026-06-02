@@ -57,7 +57,6 @@ function About() {
               </span>
             </div>
 
-            {/* Section Main Title Line */}
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.15] mb-6" style={{ color: brandDark }}>
               Built on Quality, <br />
               <span style={{ color: brandOrange }}>Trust & Excellence</span>
@@ -109,9 +108,7 @@ function About() {
             </a>
 
           </div>
-
         </div>
-
       </div>
     </section>
   )

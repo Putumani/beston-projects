@@ -9,7 +9,6 @@ import {
   FaFileContract
 } from 'react-icons/fa6';
 
-// --- Imports ---
 import goodwoodMain from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing.jpg';
 import goodwood1 from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing-1.jpg';
 import goodwood2 from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing-2.jpg';
