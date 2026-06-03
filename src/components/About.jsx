@@ -3,7 +3,7 @@ import { FaCheck, FaArrowRight } from 'react-icons/fa6'
 import aboutMainImg from '../assets/home/about/about-main.jpg' 
 import aboutSubImg from '../assets/home/about/about-sub.jpg'
 
-function About() {
+function About({ navigateTo }) {
   const brandDark = '#071d46'
   const brandOrange = '#ff5722'
 
@@ -95,9 +95,9 @@ function About() {
               ))}
             </div>
 
-            <a
-              href="#contact"
-              className="group px-7 h-13 rounded-full text-white text-sm font-bold transition-all hover:scale-[1.03] duration-200 tracking-wide flex items-center justify-center gap-2.5 shadow-md"
+            <button
+              onClick={() => navigateTo('contact')}
+              className="group px-7 h-13 rounded-full text-white text-sm font-bold transition-all hover:scale-[1.03] duration-200 tracking-wide flex items-center justify-center gap-2.5 shadow-md border-none cursor-pointer"
               style={{ 
                 backgroundColor: brandDark,
                 boxShadow: '0 8px 20px -6px rgba(7, 29, 70, 0.25)'
@@ -105,7 +105,7 @@ function About() {
             >
               <span>Get Free Consultation</span>
               <FaArrowRight size={12} className="transform transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </button>
 
           </div>
         </div>

@@ -61,8 +61,6 @@ function Services({ navigateTo, isPreview }) {
     <>
       <section className="w-full py-20 lg:py-28 bg-[#f9fafb] select-none">
         <div className="w-full mx-auto px-6 md:px-10 lg:px-[50px]" style={{ maxWidth: '1440px' }}>
-          
-          {/* Section Headings */}
           <div className="text-center max-w-2xl mx-auto mb-16 lg:mb-24">
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="w-8 h-[2px]" style={{ backgroundColor: brandOrange }} />
@@ -79,7 +77,6 @@ function Services({ navigateTo, isPreview }) {
             </p>
           </div>
 
-          {/* Cards Portfolio Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 items-stretch mb-16">
             {servicesData.map((service, idx) => (
               <div 
@@ -127,7 +124,6 @@ function Services({ navigateTo, isPreview }) {
                     </ul>
                   </div>
 
-                  {/* Card Actions Container */}
                   <div className="flex items-center justify-between pt-4 border-t border-gray-50">
                     <button 
                       onClick={() => navigateTo('services')}
@@ -138,13 +134,12 @@ function Services({ navigateTo, isPreview }) {
                       <FaArrowRight size={11} className="transform transition-transform group-hover:translate-x-0.5" />
                     </button>
                     
-                    <a 
-                      href="#quote" 
-                      className="text-xs font-bold px-4 py-2 rounded-full border border-gray-200 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all"
-                      style={{ color: brandDark, textDecoration: 'none' }}
+                    <button 
+                      onClick={() => navigateTo('contact')}
+                      className="text-xs font-bold px-4 py-2 rounded-full border border-gray-200 transition-all cursor-pointer bg-white hover:bg-gray-900 text-[#071d46] hover:text-gray-400"
                     >
                       Request Quote
-                    </a>
+                    </button>
                   </div>
 
                 </div>
@@ -152,7 +147,6 @@ function Services({ navigateTo, isPreview }) {
             ))}
           </div>
 
-          {/* Conditional Bottom Section CTA Trigger (Only visible on Home preview) */}
           {isPreview && (
             <div className="flex items-center justify-center">
               <div 
@@ -178,7 +172,6 @@ function Services({ navigateTo, isPreview }) {
         </div>
       </section>
 
-      {/* Parallax Feature Backdrop Section */}
       <section 
         className="relative w-full h-[320px] sm:h-[400px] md:h-[480px] z-0 overflow-hidden select-none"
         style={{ clipPath: 'inset(0 0 0 0)' }}
@@ -211,4 +204,4 @@ function Services({ navigateTo, isPreview }) {
   )
 }
 
-export default Services
+export default Services;

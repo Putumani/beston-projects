@@ -14,7 +14,13 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
+    
+    const subject = encodeURIComponent(`New Project Inquiry: ${formData.projectType}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:bestonconstruct@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (

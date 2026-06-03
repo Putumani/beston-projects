@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,6 +15,12 @@ function App() {
   const [currentView, setCurrentView] = useState('home');
   const aboutRef = useRef(null);
 
+  useEffect(() => {
+    if (currentView !== 'home-about') {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [currentView]);
+
   const navigateTo = (viewName) => {
     if (viewName === 'about') {
       setCurrentView('home');
@@ -23,7 +29,6 @@ function App() {
       }, 100);
     } else {
       setCurrentView(viewName);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -35,10 +40,10 @@ function App() {
         <>
           <Hero />
           <div ref={aboutRef}>
-            <About />
+            <About navigateTo={navigateTo} />
           </div>
           <Services navigateTo={navigateTo} /> 
-          <Projects />
+          <Projects navigateTo={navigateTo} /> 
           <InteriorsReference />
           <CTA />
         </>
