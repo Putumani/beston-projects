@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa6';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +14,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const aboutRef = useRef(null);
 
   useEffect(() => {
@@ -20,6 +22,19 @@ function App() {
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
   }, [currentView]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigateTo = (viewName) => {
     if (viewName === 'about') {
@@ -30,6 +45,13 @@ function App() {
     } else {
       setCurrentView(viewName);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -54,6 +76,20 @@ function App() {
       {currentView === 'contact' && <ContactPage />}
       
       <Footer navigateTo={navigateTo} />
+
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 border-none cursor-pointer"
+          style={{
+            backgroundColor: '#ff5722',
+            color: 'white'
+          }}
+          aria-label="Back to top"
+        >
+          <FaArrowUp size={20} />
+        </button>
+      )}
     </div>
   );
 }

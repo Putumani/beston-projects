@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaImages, FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 
-// Paving Gallery Images
 import pavingMain from '../../assets/projects/paving/paving.jpg';
 import paving1 from '../../assets/projects/paving/paving-1.jpg';
 import paving2 from '../../assets/projects/paving/paving-2.jpg';
@@ -85,7 +84,6 @@ export default function PavingGallery({ navigateTo, brandDark, brandOrange }) {
         </div>
       </div>
 
-      {/* Fullscreen Gallery Modal */}
       {galleryViewOpen && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center" onClick={closeGalleryView}>
           <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
