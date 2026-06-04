@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
-import { 
-  FaCalendarDays, 
-  FaLocationDot, 
-  FaArrowRight,
-  FaArrowLeft,
-  FaChevronLeft,
-  FaChevronRight,
-  FaFileContract,
-  FaImages
-} from 'react-icons/fa6';
 
+// Import all tab components
+import AllProjectsTab from '../components/project-page/AllProjectsTab';
+import ConcreteWorksTab from '../components/project-page/ConcreteWorksTab';
+import WaterproofingTab from '../components/project-page/WaterproofingTab';
+import RenovationsTab from '../components/project-page/RenovationsTab';
+import BoundaryWallsTab from '../components/project-page/BoundaryWallsTab';
+import BraaiAreasTab from '../components/project-page/BraaiAreasTab';
+import PaintingTab from '../components/project-page/PaintingTab';
+import FlooringTab from '../components/project-page/FlooringTab';
+import RoofingTab from '../components/project-page/RoofingTab';
+import PavingGallery from '../components/project-page/PavingGallery';
+import AluminiumDoorsGallery from '../components/project-page/AluminiumDoorsGallery';
+import ProjectDetailView from '../components/project-page/ProjectDetailView';
+
+// Import all project images
 import goodwoodMain from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing.jpg';
 import goodwood1 from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing-1.jpg';
 import goodwood2 from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing-2.jpg';
@@ -155,14 +160,6 @@ import nutecGate6 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-ga
 import nutecGate7 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-gate-and-boundary-wall-7.jpg';
 import nutecGate8 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-gate-and-boundary-wall-8.jpg';
 
-// Paving Gallery Images
-import pavingMain from '../assets/projects/paving/paving.jpg';
-import paving1 from '../assets/projects/paving/paving-1.jpg';
-import paving2 from '../assets/projects/paving/paving-2.jpg';
-import paving3 from '../assets/projects/paving/paving-3.jpg';
-import paving4 from '../assets/projects/paving/paving-4.jpg';
-import paving5 from '../assets/projects/paving/paving-5.jpg';
-
 const projectsList = [
   {
     id: "plattekloof-glen-roof",
@@ -171,13 +168,8 @@ const projectsList = [
     category: "Roofing",
     scope: "Structural Roof Inspection, Tile/Sheet Removal & Full Re-Roofing Installation",
     image: roofReplacementMain,
-    images: [
-      roofReplacementMain,
-      roofReplacement1,
-      roofReplacement2,
-      roofReplacement3
-    ],
-    details: "End-to-end roof replacement program designed to restore structural integrity and weatherproofing efficiency. The scope encompassed the systematic removal of aged roofing materials, underlying timber structure inspection for moisture damage, installation of high-grade waterproof underlayment, and the application of new roofing finish to ensure long-term protection against the Cape elements."
+    images: [roofReplacementMain, roofReplacement1, roofReplacement2, roofReplacement3],
+    details: "End-to-end roof replacement program designed to restore structural integrity and weatherproofing efficiency..."
   },
   {
     id: "goodwood-tiling-waterproofing",
@@ -186,15 +178,8 @@ const projectsList = [
     category: "Waterproofing",
     scope: "Substrate Priming, Multi-Layer Waterproofing Membranes & Precision small-Format Tiling",
     image: goodwoodMain,
-    images: [
-      goodwoodMain,
-      goodwood1,
-      goodwood2,
-      goodwood3,
-      goodwood4,
-      goodwood5,
-    ],
-    details: "High-precision surface overhaul managing moisture remediation and decorative porcelain structural applications. The operational scope covers extensive subsurface moisture parsing, high-performance poly-membrane layout installations, technical fall-alignment leveling, and premium high-flex compound tiling. All layouts have been optimised for extreme water-resistance and flawless surface execution designed to withstand heavy wear."
+    images: [goodwoodMain, goodwood1, goodwood2, goodwood3, goodwood4, goodwood5],
+    details: "High-precision surface overhaul managing moisture remediation and decorative porcelain structural applications..."
   },
   {
     id: "camps-bay-roofing-waterproofing",
@@ -203,14 +188,8 @@ const projectsList = [
     category: "Waterproofing",
     scope: "Slate/Tile Replacement, High-Durability Waterproofing & Precision Roof Painting",
     image: roofingCampsBayMain,
-    images: [
-      roofingCampsBayMain,
-      roofingCampsBay1,
-      roofingCampsBay2,
-      roofingCampsBay3,
-      roofingCampsBay4
-    ],
-    details: "High-end coastal property asset preservation featuring a comprehensive slate and tile replacement matrix. Scope executed incorporates the strategic identification and removal of fractured or compromised roofing slates, sub-structure structural inspection, full specialized waterproofing membrane applications to counter aggressive Atlantic maritime moisture, and finished with weather-shielding premium roof protective painting engineered to resist heavy UV and coastal wind degradation."
+    images: [roofingCampsBayMain, roofingCampsBay1, roofingCampsBay2, roofingCampsBay3, roofingCampsBay4],
+    details: "High-end coastal property asset preservation featuring a comprehensive slate and tile replacement matrix..."
   },
   {
     id: "nutec-gate-boundary-wall-cravenby",
@@ -219,18 +198,8 @@ const projectsList = [
     category: "Boundary Walls",
     scope: "Brick-and-Mortar Masonry, Fine Plastering & Custom Nutec Security Gate Installation",
     image: nutecGateMain,
-    images: [
-      nutecGateMain,
-      nutecGate1,
-      nutecGate2,
-      nutecGate3,
-      nutecGate4,
-      nutecGate5,
-      nutecGate6,
-      nutecGate7,
-      nutecGate8
-    ],
-    details: "Turnkey security upgrade featuring the calculation and erection of a brand new structural boundary wall paired with heavy-duty architectural fittings. Scope executed encompasses foundational site preparation, concrete brick masonry layouts, smooth weather-sealed decorative plaster coats, and the seamless anchoring of a premium low-maintenance Nutec privacy gate set into custom structural tracks to ensure durability and enhanced perimeter security."
+    images: [nutecGateMain, nutecGate1, nutecGate2, nutecGate3, nutecGate4, nutecGate5, nutecGate6, nutecGate7, nutecGate8],
+    details: "Turnkey security upgrade featuring the calculation and erection of a brand new structural boundary wall..."
   },
   {
     id: "boundary-wall-big-bay",
@@ -239,16 +208,8 @@ const projectsList = [
     category: "Boundary Walls",
     scope: "Foundational Trenching, Reinforced Blockwork & Weather-Resistant Plastering",
     image: boundaryWallMain,
-    images: [
-      boundaryWallMain,
-      boundaryWall1,
-      boundaryWall2,
-      boundaryWall3,
-      boundaryWall4,
-      boundaryWall5,
-      boundaryWall6
-    ],
-    details: "Engineering and construction of a heavy-duty perimeter boundary wall to bolster structural property limits along the coastal front. Scope executed includes deep foundational ground levelling, laying high-strength structural engineering blocks, custom vertical steel rebar reinforcement anchoring, and finished with a premium, smooth-skimmed plaster layer built to endure corrosive ocean-front winds and atmospheric salinity."
+    images: [boundaryWallMain, boundaryWall1, boundaryWall2, boundaryWall3, boundaryWall4, boundaryWall5, boundaryWall6],
+    details: "Engineering and construction of a heavy-duty perimeter boundary wall to bolster structural property limits..."
   },
   {
     id: "integrated-concrete-staircase-slab",
@@ -257,15 +218,8 @@ const projectsList = [
     category: "Concrete Works",
     scope: "Timber Formwork Engineering, Structural Prop Shoring & Precision Monolithic Concrete Pouring",
     image: staircaseMain,
-    images: [
-      staircaseMain,
-      staircase1,
-      staircase2,
-      staircase3,
-      staircase4,
-      staircase5
-    ],
-    details: "Advanced civil modification featuring the precision casting of a reinforced concrete staircase leading onto an elevated suspended concrete slab. Scope executed covers heavy-duty timber shuttering design, structural iron prop shoring setup to support weight distribution, seamless integration alongside existing roofing profiles, high-tensile steel mesh rebar installation, and a meticulous cement/concrete pour. Steps finished with smooth float screed leveling for an exceptionally clean, high-load geometric structure built to last."
+    images: [staircaseMain, staircase1, staircase2, staircase3, staircase4, staircase5],
+    details: "Advanced civil modification featuring the precision casting of a reinforced concrete staircase..."
   },
   {
     id: "slab-floor-wellington",
@@ -274,24 +228,8 @@ const projectsList = [
     category: "Concrete Works",
     scope: "Formwork Setting, Steel Reinforcement & Concrete Pouring",
     image: slabFloorMain,
-    images: [
-      slabFloorMain,
-      slabFloor1,
-      slabFloor2,
-      slabFloor3,
-      slabFloor4,
-      slabFloor5,
-      slabFloor6,
-      slabFloor7,
-      slabFloor8,
-      slabFloor9,
-      slabFloor10,
-      slabFloor11,
-      slabFloor12,
-      slabFloor13,
-      slabFloor14
-    ],
-    details: "High-precision civil engineering installation for a durable, level foundational framework. Scope executed includes specialized soil profiling, stable edge-shuttering formwork configuration, heavy-duty steel mesh reinforcing layout, followed by structural concrete pouring and professional flush screed float leveling."
+    images: [slabFloorMain, slabFloor1, slabFloor2, slabFloor3, slabFloor4, slabFloor5, slabFloor6, slabFloor7, slabFloor8, slabFloor9, slabFloor10, slabFloor11, slabFloor12, slabFloor13, slabFloor14],
+    details: "High-precision civil engineering installation for a durable, level foundational framework..."
   },
   {
     id: "multi-story-crack-repairs",
@@ -300,17 +238,8 @@ const projectsList = [
     category: "Renovations",
     scope: "High-Access Crack Stitching, Cavity Infill & Weather-Proof Skimming",
     image: parklandsCrackMain,
-    images: [
-      parklandsCrackMain,
-      parklandsCrack1,
-      parklandsCrack2,
-      parklandsCrack3,
-      parklandsCrack4,
-      parklandsCrack5,
-      parklandsCrack6,
-      parklandsCrack7
-    ],
-    details: "Comprehensive exterior restoration of a multi-story residential complex addressing building stress lines and foundational shifts. Utilizing specialized high-access extension equipment, the scope involved mapping and cutting out structural cracks, installing heavy-duty mechanical ties, injecting high-tensile epoxy cavity infills, and rendering a flush, weather-sealed plaster skim coat to perfectly blend with the existing architectural profile."
+    images: [parklandsCrackMain, parklandsCrack1, parklandsCrack2, parklandsCrack3, parklandsCrack4, parklandsCrack5, parklandsCrack6, parklandsCrack7],
+    details: "Comprehensive exterior restoration of a multi-story residential complex addressing building stress lines..."
   },
   {
     id: "structural-wall-opening-rsj",
@@ -319,16 +248,8 @@ const projectsList = [
     category: "Renovations",
     scope: "Controlled Demolition, Structural Steel Beam Installation & Masonry Rebuild",
     image: crackRepairsMain,
-    images: [
-      crackRepairsMain,
-      crackRepairs1,
-      crackRepairs2,
-      crackRepairs3,
-      crackRepairs4,
-      crackRepairs5,
-      crackRepairs6
-    ],
-    details: "Heavy-duty structural modification within an industrial/warehouse space. The project involved the calculated, controlled demolition of a load-bearing masonry partition to create a wide structural opening. Executed using structural steel iron props for temporary shoring, followed by the precision installation of a heavy-duty steel I-beam (RSJ) to permanently redistribute overhead weight. Completed with engineered brick-and-mortar structural reconstruction above the lintel line."
+    images: [crackRepairsMain, crackRepairs1, crackRepairs2, crackRepairs3, crackRepairs4, crackRepairs5, crackRepairs6],
+    details: "Heavy-duty structural modification within an industrial/warehouse space..."
   },
   {
     id: "house-extension-bothasig",
@@ -337,22 +258,8 @@ const projectsList = [
     category: "Renovations",
     scope: "Brickwork, Roofing, Plastering & Aluminium Window Installations",
     image: extensionMain,
-    images: [
-      extensionMain,
-      extensionAluminium,
-      extensionBrickMain,
-      extensionBrick1,
-      extensionBrick2,
-      extensionBrick3,
-      extensionBrick4,
-      extensionPlastering1,
-      extensionPlasteringAluminium,
-      extensionPlumbingPlastering,
-      extensionRoofingMain,
-      extensionRoofing1,
-      extensionRoofing2
-    ],
-    details: "Major structural additions and modern upgrades to an existing property. Scope executed includes robust new foundational brickwork, comprehensive roofing timber engineering and waterproofing, internal and external plastering work, topped off with a premium transition to modern architectural aluminium windows and doors."
+    images: [extensionMain, extensionAluminium, extensionBrickMain, extensionBrick1, extensionBrick2, extensionBrick3, extensionBrick4, extensionPlastering1, extensionPlasteringAluminium, extensionPlumbingPlastering, extensionRoofingMain, extensionRoofing1, extensionRoofing2],
+    details: "Major structural additions and modern upgrades to an existing property..."
   },
   {
     id: "wall-opening-edgemead",
@@ -361,14 +268,8 @@ const projectsList = [
     category: "Renovations",
     scope: "Controlled Demolition, Lintels/RSJ Support Installation & Load-Bearing Modifications",
     image: wallOpeningMain,
-    images: [
-      wallOpeningMain,
-      wallOpening1,
-      wallOpening2,
-      wallOpening3,
-      wallOpening4
-    ],
-    details: "Precision structural modification to create an expansive, open-plan living environment. Executed the calculated, controlled breakdown of load-bearing masonry walls, followed by the seamless installation of heavy-duty reinforced lintels and structural support configurations to safely redistribute overhead weight while achieving a modern architectural flow."
+    images: [wallOpeningMain, wallOpening1, wallOpening2, wallOpening3, wallOpening4],
+    details: "Precision structural modification to create an expansive, open-plan living environment..."
   },
   {
     id: "built-in-braai-big-bay",
@@ -377,15 +278,8 @@ const projectsList = [
     category: "Braai Areas",
     scope: "Custom Masonry, Structural Brickwork & Custom Chimney Flue Integration",
     image: braaiMain,
-    images: [
-      braaiMain,
-      braai1,
-      braai2,
-      braai3,
-      braai4,
-      braai5
-    ],
-    details: "Premium craftsmanship designed to maximize outdoor entertainment luxury. Managed complete brickwork layout setup, fire-rated chamber structures, precision architectural leveling, and flush plaster skimming for an integrated premium lifestyle addition matching the surrounding coastal property aesthetics."
+    images: [braaiMain, braai1, braai2, braai3, braai4, braai5],
+    details: "Premium craftsmanship designed to maximize outdoor entertainment luxury..."
   },
   {
     id: "front-wall-demolition-somerset-west",
@@ -394,17 +288,8 @@ const projectsList = [
     category: "Boundary Walls",
     scope: "Controlled Demolition, Structural Footings & Boundary Wall Reconstruction",
     image: wallDemolishMain,
-    images: [
-      wallDemolishMain,
-      wallDemolish1,
-      wallDemolish2,
-      wallRebuildMain,
-      wallRebuild1,
-      wallRebuild2,
-      wallRebuild3,
-      wallRebuild4
-    ],
-    details: "Full civil modification of a residential boundary layout. Safely executed the controlled tactical breakdown of a compromised perimeter front wall, followed by sub-surface clearing, foundational leveling, and a robust brick-and-mortar architectural rebuild tailored to maximize safety and street-side aesthetic value."
+    images: [wallDemolishMain, wallDemolish1, wallDemolish2, wallRebuildMain, wallRebuild1, wallRebuild2, wallRebuild3, wallRebuild4],
+    details: "Full civil modification of a residential boundary layout..."
   },
   {
     id: "house-repairs-mitchells-plain",
@@ -413,21 +298,8 @@ const projectsList = [
     category: "Renovations",
     scope: "Structural Renovation, Wall Rehabilitation & Subsurface Remediation",
     image: houseRepairsMain,
-    images: [
-      houseRepairsMain,
-      houseRepairs1,
-      houseRepairs2,
-      houseRepairs3,
-      houseRepairs4,
-      houseRepairs5,
-      houseRepairs6,
-      houseRepairs7,
-      houseRepairs8,
-      houseRepairs9,
-      houseRepairs10,
-      houseRepairs11
-    ],
-    details: "Complete turnkey repair program fixing extensive internal and external domestic deterioration. Project involved stripping back compromised structures, reinforcement patchings, skimming, masonry adjustments, and comprehensive surface remediation to return the asset back to premium condition safely."
+    images: [houseRepairsMain, houseRepairs1, houseRepairs2, houseRepairs3, houseRepairs4, houseRepairs5, houseRepairs6, houseRepairs7, houseRepairs8, houseRepairs9, houseRepairs10, houseRepairs11],
+    details: "Complete turnkey repair program fixing extensive internal and external domestic deterioration..."
   },
   {
     id: "painting-works-bothasig",
@@ -436,15 +308,8 @@ const projectsList = [
     category: "Painting",
     scope: "Surface Preparation, Priming & Weatherproofing Guard",
     image: paintingMain,
-    images: [
-      paintingMain,
-      painting1,
-      painting2,
-      painting3,
-      painting4,
-      painting5
-    ],
-    details: "Premium residential painting overhaul. Executed meticulous surface crack preparations, high-adhesion undercoat bonding, and premium UV-resistant exterior acrylic finish coats engineered to protect against harsh weather conditions."
+    images: [paintingMain, painting1, painting2, painting3, painting4, painting5],
+    details: "Premium residential painting overhaul..."
   },
   {
     id: "premium-tiling-bothasig",
@@ -453,15 +318,8 @@ const projectsList = [
     category: "Flooring",
     scope: "Surface Levelling, Precision Layout & Grouting",
     image: tilingMain,
-    images: [
-      tilingMain,
-      tiling1,
-      tiling2,
-      tiling3,
-      tiling4,
-      tiling5
-    ],
-    details: "Comprehensive, high-end residential interior flooring upgrade. Project involved strict sub-floor prep, precision alignment framing, and flush application of premium ceramic/porcelain tiles completed with weather-guarded high-flex structural grout lines."
+    images: [tilingMain, tiling1, tiling2, tiling3, tiling4, tiling5],
+    details: "Comprehensive, high-end residential interior flooring upgrade..."
   },
   {
     id: "tiling-edgemead",
@@ -470,35 +328,26 @@ const projectsList = [
     category: "Flooring",
     scope: "Sub-floor Leveling, Large Format Tile Cutting & Grout Application",
     image: tilingEdgemeadMain,
-    images: [
-      tilingEdgemeadMain,
-      tilingEdgemead1,
-      tilingEdgemead2,
-      tilingEdgemead3,
-      tilingEdgemead4
-    ],
-    details: "Precision interior floor surfacing across a residential domestic space. Meticulously executed sub-floor levelling, layout calibration for symmetry, fine-edge wet tile cutting, and complete flexible grout sealing to ensure high durability and a flawless, modern high-end architectural look."
+    images: [tilingEdgemeadMain, tilingEdgemead1, tilingEdgemead2, tilingEdgemead3, tilingEdgemead4],
+    details: "Precision interior floor surfacing across a residential domestic space..."
   }
 ];
-
-const categories = ["All", "Concrete Works", "Waterproofing", "Renovations", "Boundary Walls", "Braai Areas", "Painting", "Flooring", "Roofing"];
-
-// Paving gallery images array
-const pavingImages = [pavingMain, paving1, paving2, paving3, paving4, paving5];
 
 export default function ProjectsPage({ navigateTo }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
-  const [galleryViewOpen, setGalleryViewOpen] = useState(false);
-  const [activeGalleryImgIndex, setActiveGalleryImgIndex] = useState(0);
 
   const brandDark = '#071d46';
   const brandOrange = '#ff5722';
 
-  const filteredProjects = activeFilter === "All" 
-    ? projectsList 
-    : projectsList.filter(p => p.category === activeFilter);
+  const getFilteredProjects = () => {
+    if (activeFilter === "All") return projectsList;
+    if (activeFilter === "Paving" || activeFilter === "Aluminium Doors") return [];
+    return projectsList.filter(p => p.category === activeFilter);
+  };
+
+  const filteredProjects = getFilteredProjects();
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -519,317 +368,82 @@ export default function ProjectsPage({ navigateTo }) {
     setActiveImgIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
   };
 
-  const openGalleryView = (index) => {
-    setActiveGalleryImgIndex(index);
-    setGalleryViewOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeGalleryView = () => {
-    setGalleryViewOpen(false);
-    document.body.style.overflow = 'auto';
-  };
-
-  const nextGalleryImage = () => {
-    setActiveGalleryImgIndex((prev) => (prev + 1) % pavingImages.length);
-  };
-
-  const prevGalleryImage = () => {
-    setActiveGalleryImgIndex((prev) => (prev - 1 + pavingImages.length) % pavingImages.length);
-  };
-
   if (selectedProject) {
     return (
-      <div className="w-full bg-[#f9fafb] min-h-screen pb-20 font-sans">
-        <div className="w-full bg-white border-b border-gray-200 py-4 px-4 md:px-8 sticky top-0 z-40 shadow-sm">
-          <div className="w-full mx-auto flex items-center justify-between" style={{ maxWidth: '1200px' }}>
-            <button 
-              onClick={handleBackToGrid}
-              className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-gray-600 hover:text-gray-900 transition-colors border border-gray-200 bg-gray-50 px-4 py-2 rounded-xl border-none cursor-pointer"
-            >
-              <FaArrowLeft size={12} />
-              <span>Back to Projects</span>
-            </button>
-            <span className="text-[10px] font-black uppercase bg-gray-100 px-3 py-1.5 rounded-md text-slate-700 tracking-wider">
-              Showroom / {selectedProject.category}
-            </span>
-          </div>
-        </div>
-
-        <main className="w-full mx-auto px-4 md:px-8 mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8" style={{ maxWidth: '1200px' }}>
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <div className="w-full bg-black aspect-[4/3] md:aspect-[16/10] rounded-3xl relative overflow-hidden group shadow-md flex items-center justify-center">
-              <img 
-                src={selectedProject.images[activeImgIndex]} 
-                alt={`${selectedProject.title} view`} 
-                className="max-w-full max-h-full object-contain"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
-
-              {selectedProject.images.length > 1 && (
-                <>
-                  <button 
-                    onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/80 p-3.5 rounded-full backdrop-blur-sm transition-all shadow border-none cursor-pointer"
-                  >
-                    <FaChevronLeft size={16} />
-                  </button>
-                  <button 
-                    onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/80 p-3.5 rounded-full backdrop-blur-sm transition-all shadow border-none cursor-pointer"
-                  >
-                    <FaChevronRight size={16} />
-                  </button>
-                </>
-              )}
-
-              <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm px-3 py-1 rounded-md text-white text-xs font-bold tracking-wider">
-                {activeImgIndex + 1} / {selectedProject.images.length}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
-              {selectedProject.images.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImgIndex(idx)}
-                  className={`aspect-square rounded-xl overflow-hidden bg-gray-100 transition-all border-none cursor-pointer ${
-                    activeImgIndex === idx 
-                      ? 'ring-4 ring-offset-2 scale-95' 
-                      : 'opacity-70 hover:opacity-100'
-                  }`}
-                  style={{ '--tw-ring-color': brandDark }}
-                >
-                  <img src={img} alt="Thumbnail preview" className="w-full h-full object-cover" />
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm flex flex-col justify-between h-fit lg:sticky lg:top-24">
-            <div>
-              <div className="flex items-center gap-1.5 text-gray-400 font-bold text-xs mb-3">
-                <FaLocationDot size={12} style={{ color: brandOrange }} />
-                <span className="text-gray-600">{selectedProject.location}</span>
-              </div>
-
-              <h1 className="text-2xl font-black tracking-tight text-gray-900 leading-tight mb-4">
-                {selectedProject.title}
-              </h1>
-
-              <div className="bg-slate-50 rounded-2xl p-4 mb-6 border border-slate-100">
-                <h4 className="text-[11px] font-black uppercase text-slate-400 tracking-wider mb-1 flex items-center gap-1.5">
-                  <FaFileContract size={11} />
-                  Operational Scope
-                </h4>
-                <p className="text-sm font-bold text-slate-800">{selectedProject.scope}</p>
-              </div>
-
-              <p className="text-gray-500 text-sm font-medium leading-relaxed mb-6">
-                {selectedProject.details}
-              </p>
-            </div>
-
-            <div className="border-t border-gray-100 pt-5 mt-4">
-              <button
-                onClick={() => navigateTo('home')}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-extrabold text-sm uppercase tracking-wider text-white shadow-md transition-all hover:opacity-95 border-none cursor-pointer"
-                style={{ backgroundColor: brandOrange }}
-              >
-                <span>Request Pricing Details</span>
-                <FaArrowRight size={12} />
-              </button>
-            </div>
-          </div>
-        </main>
-      </div>
+      <ProjectDetailView
+        selectedProject={selectedProject}
+        activeImgIndex={activeImgIndex}
+        onBack={handleBackToGrid}
+        onPrevImage={prevImage}
+        onNextImage={nextImage}
+        onThumbnailClick={setActiveImgIndex}
+        navigateTo={navigateTo}
+        brandDark={brandDark}
+        brandOrange={brandOrange}
+      />
     );
   }
 
+  const renderTabContent = () => {
+    switch(activeFilter) {
+      case "All":
+        return <AllProjectsTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Concrete Works":
+        return <ConcreteWorksTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Waterproofing":
+        return <WaterproofingTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Renovations":
+        return <RenovationsTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Boundary Walls":
+        return <BoundaryWallsTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Braai Areas":
+        return <BraaiAreasTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Painting":
+        return <PaintingTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Flooring":
+        return <FlooringTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Roofing":
+        return <RoofingTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Paving":
+        return <PavingGallery navigateTo={navigateTo} brandDark={brandDark} brandOrange={brandOrange} />;
+      case "Aluminium Doors":
+        return <AluminiumDoorsGallery navigateTo={navigateTo} brandDark={brandDark} brandOrange={brandOrange} />;
+      default:
+        return <AllProjectsTab projects={filteredProjects} onProjectClick={handleProjectClick} brandDark={brandDark} brandOrange={brandOrange} />;
+    }
+  };
+
   return (
-    <>
-      <div className="w-full bg-[#f9fafb] min-h-screen pb-20 font-sans relative">
-        <div 
-          className="w-full text-white flex flex-col justify-center px-6 md:px-12 relative overflow-hidden" 
-          style={{ backgroundColor: brandDark, minHeight: '280px' }}
-        >
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-          <div className="w-full mx-auto relative z-10" style={{ maxWidth: '1200px' }}>
-            <span className="text-xs uppercase font-extrabold tracking-widest text-slate-300 bg-white/10 px-3 py-1 rounded-full">
-              Proven Track Record
-            </span>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-3">
-              Our Completed Projects
-            </h1>
-            <p className="text-sm md:text-base text-slate-300 mt-2 max-w-xl font-medium">
-              Take a look at our expert structural modifications, roofing engineering, waterproofing, and premium property transformations across Cape Town.
-            </p>
-          </div>
-        </div>
-
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 mt-10">
-          <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 pb-5 overflow-x-auto scroller-clean">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 whitespace-nowrap border-none cursor-pointer ${
-                  activeFilter === cat 
-                    ? 'text-white shadow-sm' 
-                    : 'text-gray-600 bg-white hover:bg-gray-50 border border-gray-200'
-                }`}
-                style={{ 
-                  backgroundColor: activeFilter === cat ? brandDark : undefined 
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <main className="w-full mx-auto px-4 md:px-8 mt-8" style={{ maxWidth: '1200px' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {filteredProjects.map((project) => (
-              <div 
-                key={project.id}
-                onClick={() => handleProjectClick(project)}
-                className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col group"
-              >
-                <div className="w-full aspect-[16/10] bg-gray-100 overflow-hidden relative">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-sm">
-                    {project.category}
-                  </div>
-                </div>
-                
-                <div className="p-6 flex flex-col justify-between flex-grow">
-                  <div>
-                    <div className="flex items-center gap-1 text-gray-400 font-bold text-xs mb-2">
-                      <FaLocationDot size={10} style={{ color: brandOrange }} />
-                      <span>{project.location}</span>
-                    </div>
-                    <h3 className="text-xl font-black text-gray-900 tracking-tight group-hover:text-blue-950 transition-colors line-clamp-2 leading-snug">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm mt-3 font-medium line-clamp-2 leading-relaxed">
-                      {project.details}
-                    </p>
-                  </div>
-                  
-                  <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-gray-400">
-                      View Project Gallery
-                    </span>
-                    <div 
-                      className="p-2.5 rounded-xl text-white transition-all transform group-hover:translate-x-1"
-                      style={{ backgroundColor: brandDark }}
-                    >
-                      <FaArrowRight size={12} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
-
-      {/* Paving Gallery Section */}
-      <div className="w-full bg-white py-16 md:py-20 border-t border-gray-100">
-        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-orange-50 px-4 py-1.5 rounded-full mb-4">
-              <FaImages size={14} style={{ color: brandOrange }} />
-              <span className="text-xs font-black uppercase tracking-wider" style={{ color: brandOrange }}>Portfolio Highlight</span>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight text-gray-900">
-              Paving Excellence Gallery
-            </h2>
-            <p className="text-gray-500 mt-2 max-w-lg mx-auto text-sm">
-              Showcasing our premium paving installations across residential and commercial properties
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-            {pavingImages.map((img, idx) => (
-              <div
-                key={idx}
-                onClick={() => openGalleryView(idx)}
-                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer bg-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <img
-                  src={img}
-                  alt={`Paving installation ${idx + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 backdrop-blur-sm rounded-full p-2">
-                    <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <button
-              onClick={() => navigateTo('home')}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:opacity-90 border-none cursor-pointer"
-              style={{ backgroundColor: brandDark, color: 'white' }}
-            >
-              <span>Request a Paving Quote</span>
-              <FaArrowRight size={12} />
-            </button>
-          </div>
+    <div className="w-full bg-[#f9fafb] min-h-screen pb-20 font-sans relative">
+      <div className="w-full text-white flex flex-col justify-center px-6 md:px-12 relative overflow-hidden" style={{ backgroundColor: brandDark, minHeight: '280px' }}>
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div className="w-full mx-auto relative z-10" style={{ maxWidth: '1200px' }}>
+          <span className="text-xs uppercase font-extrabold tracking-widest text-slate-300 bg-white/10 px-3 py-1 rounded-full">Proven Track Record</span>
+          <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-3">Our Completed Projects</h1>
+          <p className="text-sm md:text-base text-slate-300 mt-2 max-w-xl font-medium">
+            Take a look at our expert structural modifications, roofing engineering, waterproofing, and premium property transformations across Cape Town.
+          </p>
         </div>
       </div>
 
-      {/* Fullscreen Gallery Modal */}
-      {galleryViewOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center" onClick={closeGalleryView}>
-          <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 mt-10">
+        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 pb-5 overflow-x-auto scroller-clean">
+          {["All", "Concrete Works", "Waterproofing", "Renovations", "Boundary Walls", "Braai Areas", "Painting", "Flooring", "Roofing", "Paving", "Aluminium Doors"].map((cat) => (
             <button
-              onClick={closeGalleryView}
-              className="absolute top-4 right-4 z-10 text-white bg-black/50 hover:bg-black/80 p-2 rounded-full transition-all border-none cursor-pointer"
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 whitespace-nowrap border-none cursor-pointer ${
+                activeFilter === cat ? 'text-white shadow-sm' : 'text-gray-600 bg-white hover:bg-gray-50 border border-gray-200'
+              }`}
+              style={{ backgroundColor: activeFilter === cat ? brandDark : undefined }}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              {cat}
             </button>
-            
-            <button
-              onClick={prevGalleryImage}
-              className="absolute left-4 z-10 text-white bg-black/50 hover:bg-black/80 p-3 rounded-full transition-all border-none cursor-pointer"
-            >
-              <FaChevronLeft size={20} />
-            </button>
-            
-            <button
-              onClick={nextGalleryImage}
-              className="absolute right-4 z-10 text-white bg-black/50 hover:bg-black/80 p-3 rounded-full transition-all border-none cursor-pointer"
-            >
-              <FaChevronRight size={20} />
-            </button>
-            
-            <img
-              src={pavingImages[activeGalleryImgIndex]}
-              alt={`Paving gallery ${activeGalleryImgIndex + 1}`}
-              className="max-w-[90vw] max-h-[90vh] object-contain"
-            />
-            
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-bold">
-              {activeGalleryImgIndex + 1} / {pavingImages.length}
-            </div>
-          </div>
+          ))}
         </div>
-      )}
-    </>
+      </div>
+
+      {renderTabContent()}
+    </div>
   );
 }
