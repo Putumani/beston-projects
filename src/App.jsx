@@ -38,7 +38,7 @@ function App() {
       
       {currentView === 'home' && (
         <>
-          <Hero />
+          <Hero navigateTo={navigateTo} />
           <div ref={aboutRef}>
             <About navigateTo={navigateTo} />
           </div>

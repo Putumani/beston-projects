@@ -2,7 +2,7 @@ import React from 'react'
 import { FaArrowRight, FaPlay } from 'react-icons/fa6'
 import heroVideo from '../assets/home/hero/hero.mp4'
 
-function Hero() {
+function Hero({ navigateTo }) {
   const brandDark = '#071d46'
   const brandOrange = '#ff5722'
 
@@ -39,15 +39,15 @@ function Hero() {
               and complete building extensions. Quality craftsmanship guaranteed.
             </p>
 
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center flex-shrink-0 group cursor-pointer lg:-mt-6 mt-2 sm:mt-0">
+            <div 
+              onClick={() => navigateTo('contact')}
+              className="relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center flex-shrink-0 group cursor-pointer lg:-mt-6 mt-2 sm:mt-0"
+            >
               <div className="absolute inset-0 rounded-full bg-[#071d46] scale-90 transition-transform duration-300 group-hover:scale-95 shadow-md" />
               
               <svg className="absolute w-full h-full animate-[spin_12s_linear_infinite]" viewBox="0 0 100 100">
                 <defs>
-                  <path
-                    id="circlePath"
-                    d="M 50, 50 m -34, 0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"
-                  />
+                  <path id="circlePath" d="M 50, 50 m -34, 0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0" />
                 </defs>
                 <text fill="#ffffff" className="text-[9px] font-bold tracking-[0.18em] uppercase">
                   <textPath xlinkHref="#circlePath" startOffset="0%">
@@ -60,7 +60,6 @@ function Hero() {
                 <FaArrowRight size={12} className="transform transition-transform group-hover:translate-x-0.5" />
               </div>
             </div>
-
           </div>
         </div>
         
@@ -76,7 +75,6 @@ function Hero() {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 w-full shadow-[0_25px_60px_-15px_rgba(7,29,70,0.12)] rounded-3xl overflow-hidden bg-white relative z-20">
-          
           <div className="lg:col-span-8 relative h-[250px] sm:h-[450px] bg-gray-900 group">
             <video
               src={heroVideo}
@@ -97,26 +95,20 @@ function Hero() {
           </div>
 
           <div className="lg:col-span-4 p-8 sm:p-12 flex flex-col justify-center gap-8 text-white relative" style={{ backgroundColor: brandOrange }}>
-            
             <div>
               <h3 className="text-4xl sm:text-5xl font-black tracking-tight mb-1">500+</h3>
               <p className="text-xs sm:text-sm font-bold text-white/80 uppercase tracking-wider">Projects Completed</p>
             </div>
-
             <div className="border-t border-white/20 pt-6">
               <h3 className="text-4xl sm:text-5xl font-black tracking-tight mb-1">15+</h3>
               <p className="text-xs sm:text-sm font-bold text-white/80 uppercase tracking-wider">Years of Experience</p>
             </div>
-
             <div className="border-t border-white/20 pt-6">
               <h3 className="text-4xl sm:text-5xl font-black tracking-tight mb-1">98%</h3>
               <p className="text-xs sm:text-sm font-bold text-white/80 uppercase tracking-wider">Satisfaction Rate</p>
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       <div 
@@ -128,7 +120,6 @@ function Hero() {
           <div className="absolute top-24 left-[9%] text-white text-sm select-none opacity-60">✦</div>
         </div>
       </div>
-
     </section>
   )
 }

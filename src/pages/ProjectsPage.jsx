@@ -6,7 +6,8 @@ import {
   FaArrowLeft,
   FaChevronLeft,
   FaChevronRight,
-  FaFileContract
+  FaFileContract,
+  FaImages
 } from 'react-icons/fa6';
 
 import goodwoodMain from '../assets/projects/waterproofing/tiling-and-waterproofing/tiling-and-waterproofing.jpg';
@@ -153,6 +154,14 @@ import nutecGate5 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-ga
 import nutecGate6 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-gate-and-boundary-wall-6.jpg';
 import nutecGate7 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-gate-and-boundary-wall-7.jpg';
 import nutecGate8 from '../assets/projects/nutec-gate-and-boundary-wall/nutec-gate-and-boundary-wall-8.jpg';
+
+// Paving Gallery Images
+import pavingMain from '../assets/projects/paving/paving.jpg';
+import paving1 from '../assets/projects/paving/paving-1.jpg';
+import paving2 from '../assets/projects/paving/paving-2.jpg';
+import paving3 from '../assets/projects/paving/paving-3.jpg';
+import paving4 from '../assets/projects/paving/paving-4.jpg';
+import paving5 from '../assets/projects/paving/paving-5.jpg';
 
 const projectsList = [
   {
@@ -474,10 +483,15 @@ const projectsList = [
 
 const categories = ["All", "Concrete Works", "Waterproofing", "Renovations", "Boundary Walls", "Braai Areas", "Painting", "Flooring", "Roofing"];
 
+// Paving gallery images array
+const pavingImages = [pavingMain, paving1, paving2, paving3, paving4, paving5];
+
 export default function ProjectsPage({ navigateTo }) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
+  const [galleryViewOpen, setGalleryViewOpen] = useState(false);
+  const [activeGalleryImgIndex, setActiveGalleryImgIndex] = useState(0);
 
   const brandDark = '#071d46';
   const brandOrange = '#ff5722';
@@ -503,6 +517,25 @@ export default function ProjectsPage({ navigateTo }) {
 
   const prevImage = () => {
     setActiveImgIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+  };
+
+  const openGalleryView = (index) => {
+    setActiveGalleryImgIndex(index);
+    setGalleryViewOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeGalleryView = () => {
+    setGalleryViewOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
+  const nextGalleryImage = () => {
+    setActiveGalleryImgIndex((prev) => (prev + 1) % pavingImages.length);
+  };
+
+  const prevGalleryImage = () => {
+    setActiveGalleryImgIndex((prev) => (prev - 1 + pavingImages.length) % pavingImages.length);
   };
 
   if (selectedProject) {
@@ -614,95 +647,189 @@ export default function ProjectsPage({ navigateTo }) {
   }
 
   return (
-    <div className="w-full bg-[#f9fafb] min-h-screen pb-20 font-sans relative">
-      <div 
-        className="w-full text-white flex flex-col justify-center px-6 md:px-12 relative overflow-hidden" 
-        style={{ backgroundColor: brandDark, minHeight: '280px' }}
-      >
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div className="w-full mx-auto relative z-10" style={{ maxWidth: '1200px' }}>
-          <span className="text-xs uppercase font-extrabold tracking-widest text-slate-300 bg-white/10 px-3 py-1 rounded-full">
-            Proven Track Record
-          </span>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-3">
-            Our Completed Projects
-          </h1>
-          <p className="text-sm md:text-base text-slate-300 mt-2 max-w-xl font-medium">
-            Take a look at our expert structural modifications, roofing engineering, waterproofing, and premium property transformations across Cape Town.
-          </p>
+    <>
+      <div className="w-full bg-[#f9fafb] min-h-screen pb-20 font-sans relative">
+        <div 
+          className="w-full text-white flex flex-col justify-center px-6 md:px-12 relative overflow-hidden" 
+          style={{ backgroundColor: brandDark, minHeight: '280px' }}
+        >
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <div className="w-full mx-auto relative z-10" style={{ maxWidth: '1200px' }}>
+            <span className="text-xs uppercase font-extrabold tracking-widest text-slate-300 bg-white/10 px-3 py-1 rounded-full">
+              Proven Track Record
+            </span>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-3">
+              Our Completed Projects
+            </h1>
+            <p className="text-sm md:text-base text-slate-300 mt-2 max-w-xl font-medium">
+              Take a look at our expert structural modifications, roofing engineering, waterproofing, and premium property transformations across Cape Town.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 mt-10">
-        <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 pb-5 overflow-x-auto scroller-clean">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className={`px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 whitespace-nowrap border-none cursor-pointer ${
-                activeFilter === cat 
-                  ? 'text-white shadow-sm' 
-                  : 'text-gray-600 bg-white hover:bg-gray-50 border border-gray-200'
-              }`}
-              style={{ 
-                backgroundColor: activeFilter === cat ? brandDark : undefined 
-              }}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8 mt-10">
+          <div className="flex flex-wrap items-center gap-2 border-b border-gray-200 pb-5 overflow-x-auto scroller-clean">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-200 whitespace-nowrap border-none cursor-pointer ${
+                  activeFilter === cat 
+                    ? 'text-white shadow-sm' 
+                    : 'text-gray-600 bg-white hover:bg-gray-50 border border-gray-200'
+                }`}
+                style={{ 
+                  backgroundColor: activeFilter === cat ? brandDark : undefined 
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <main className="w-full mx-auto px-4 md:px-8 mt-8" style={{ maxWidth: '1200px' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
-            <div 
-              key={project.id}
-              onClick={() => handleProjectClick(project)}
-              className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col group"
-            >
-              <div className="w-full aspect-[16/10] bg-gray-100 overflow-hidden relative">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-sm">
-                  {project.category}
-                </div>
-              </div>
-              
-              <div className="p-6 flex flex-col justify-between flex-grow">
-                <div>
-                  <div className="flex items-center gap-1 text-gray-400 font-bold text-xs mb-2">
-                    <FaLocationDot size={10} style={{ color: brandOrange }} />
-                    <span>{project.location}</span>
+        <main className="w-full mx-auto px-4 md:px-8 mt-8" style={{ maxWidth: '1200px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {filteredProjects.map((project) => (
+              <div 
+                key={project.id}
+                onClick={() => handleProjectClick(project)}
+                className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer flex flex-col group"
+              >
+                <div className="w-full aspect-[16/10] bg-gray-100 overflow-hidden relative">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider text-slate-800 shadow-sm">
+                    {project.category}
                   </div>
-                  <h3 className="text-xl font-black text-gray-900 tracking-tight group-hover:text-blue-950 transition-colors line-clamp-2 leading-snug">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm mt-3 font-medium line-clamp-2 leading-relaxed">
-                    {project.details}
-                  </p>
                 </div>
                 
-                <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
-                  <span className="text-[11px] font-black uppercase tracking-wider text-gray-400">
-                    View Project Gallery
-                  </span>
-                  <div 
-                    className="p-2.5 rounded-xl text-white transition-all transform group-hover:translate-x-1"
-                    style={{ backgroundColor: brandDark }}
-                  >
-                    <FaArrowRight size={12} />
+                <div className="p-6 flex flex-col justify-between flex-grow">
+                  <div>
+                    <div className="flex items-center gap-1 text-gray-400 font-bold text-xs mb-2">
+                      <FaLocationDot size={10} style={{ color: brandOrange }} />
+                      <span>{project.location}</span>
+                    </div>
+                    <h3 className="text-xl font-black text-gray-900 tracking-tight group-hover:text-blue-950 transition-colors line-clamp-2 leading-snug">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm mt-3 font-medium line-clamp-2 leading-relaxed">
+                      {project.details}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-6 pt-4 border-t border-gray-50 flex items-center justify-between">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-gray-400">
+                      View Project Gallery
+                    </span>
+                    <div 
+                      className="p-2.5 rounded-xl text-white transition-all transform group-hover:translate-x-1"
+                      style={{ backgroundColor: brandDark }}
+                    >
+                      <FaArrowRight size={12} />
+                    </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </main>
+      </div>
+
+      {/* Paving Gallery Section */}
+      <div className="w-full bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-orange-50 px-4 py-1.5 rounded-full mb-4">
+              <FaImages size={14} style={{ color: brandOrange }} />
+              <span className="text-xs font-black uppercase tracking-wider" style={{ color: brandOrange }}>Portfolio Highlight</span>
             </div>
-          ))}
+            <h2 className="text-2xl md:text-3xl font-black tracking-tight text-gray-900">
+              Paving Excellence Gallery
+            </h2>
+            <p className="text-gray-500 mt-2 max-w-lg mx-auto text-sm">
+              Showcasing our premium paving installations across residential and commercial properties
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {pavingImages.map((img, idx) => (
+              <div
+                key={idx}
+                onClick={() => openGalleryView(idx)}
+                className="group relative aspect-square overflow-hidden rounded-2xl cursor-pointer bg-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <img
+                  src={img}
+                  alt={`Paving installation ${idx + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                    <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <button
+              onClick={() => navigateTo('home')}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm uppercase tracking-wider transition-all hover:opacity-90 border-none cursor-pointer"
+              style={{ backgroundColor: brandDark, color: 'white' }}
+            >
+              <span>Request a Paving Quote</span>
+              <FaArrowRight size={12} />
+            </button>
+          </div>
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Fullscreen Gallery Modal */}
+      {galleryViewOpen && (
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center" onClick={closeGalleryView}>
+          <div className="relative w-full h-full flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={closeGalleryView}
+              className="absolute top-4 right-4 z-10 text-white bg-black/50 hover:bg-black/80 p-2 rounded-full transition-all border-none cursor-pointer"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <button
+              onClick={prevGalleryImage}
+              className="absolute left-4 z-10 text-white bg-black/50 hover:bg-black/80 p-3 rounded-full transition-all border-none cursor-pointer"
+            >
+              <FaChevronLeft size={20} />
+            </button>
+            
+            <button
+              onClick={nextGalleryImage}
+              className="absolute right-4 z-10 text-white bg-black/50 hover:bg-black/80 p-3 rounded-full transition-all border-none cursor-pointer"
+            >
+              <FaChevronRight size={20} />
+            </button>
+            
+            <img
+              src={pavingImages[activeGalleryImgIndex]}
+              alt={`Paving gallery ${activeGalleryImgIndex + 1}`}
+              className="max-w-[90vw] max-h-[90vh] object-contain"
+            />
+            
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-bold">
+              {activeGalleryImgIndex + 1} / {pavingImages.length}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

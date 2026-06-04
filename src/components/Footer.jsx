@@ -17,6 +17,7 @@ function Footer() {
 
   const facebookUrl = "https://web.facebook.com/bestonprojects/?_rdc=1&_rdr"
   const whatsappUrl = "https://wa.me/27658641093"
+  const phuraDevsUrl = "https://wa.me/27786229066"
 
   return (
     <footer className="w-full border-t border-slate-800 pt-16 pb-8" style={{ backgroundColor: brandDark }}>
@@ -122,10 +123,15 @@ function Footer() {
           <p className="text-xs font-medium text-slate-500 text-center sm:text-left">
             &copy; {currentYear} Beston Projects. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs font-medium text-slate-500">
-            <a href="#" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-400 transition-colors">Terms of Service</a>
-          </div>
+          
+          <a 
+            href={phuraDevsUrl} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors"
+          >
+            Developed by <FaWhatsapp size={14} className="text-[#25D366]" /> Phura Devs
+          </a>
         </div>
 
       </div>
